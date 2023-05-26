@@ -61,6 +61,9 @@ function Footer() {
       console.error('Error:', error);
     }finally{
       setIsLoading(false);
+      setName("");
+      setEmail("");
+      setOpinion("");
     }
   };
 
@@ -130,7 +133,7 @@ function Footer() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your name" bg="white"
+                  placeholder="Your email" bg="white"
                   required
                 />
               </FormControl>
@@ -138,7 +141,7 @@ function Footer() {
                 <Textarea
                   value={opinion}
                   onChange={(e) => setOpinion(e.target.value)}
-                  placeholder="Your name" bg="white"
+                  placeholder="Your message" bg="white"
                   rows={4}
                   required
                 />
