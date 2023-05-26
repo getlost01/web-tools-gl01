@@ -15,7 +15,11 @@ export default function App() {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/404" element={<NotFound />} />
+        <Route path="/" element={<Home site={"vibrantcolortools"}/>} />
         <Route path="/review/:extension" element={<ExitForm/>} />
+        <Route path="/vibrantcolortools" element={<Home site={"vibrantcolortools"}/>} />
+        <Route path="/sitesaver" element={<Home site={"sitesaver"}/>} />
+        <Route path="/cpcontestcalendar" element={<Home site={"cpcontestcalendar"}/>} />
       </Routes>
       <Footer />
     </>
