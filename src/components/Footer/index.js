@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 import {
   Box,
@@ -12,6 +13,8 @@ import {
   Text,
   Textarea,
   useToken,
+  FormControl, 
+  Spinner
 } from "@chakra-ui/react";
 import {
   EnvelopeSimple,
@@ -23,6 +26,29 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   const [blue400] = useToken("colors", ["blue.400"]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [opinion, setOpinion] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      setIsLoading(true);
+      const response = await axios.post(`https://extensions-info-api.vercel.app/api/opinion/add`, {
+        name,
+        email,
+        opinion
+      });
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }finally{
+      setIsLoading(false);
+    }
+  };
+
+
 
   return (
     <Box bg="gray.100">
@@ -73,12 +99,38 @@ function Footer() {
             <Heading as="h3" size="h3">
               Share Your Opinion
             </Heading>
-            <Input placeholder="Your name" bg="white" />
-            <Input placeholder="Your email" bg="white" />
-            <Textarea placeholder="Your opinion" rows={4} bg="white"/>
-            <Box>
-              <Button colorScheme="blue">Send</Button>
-            </Box>
+            <form onSubmit={handleSubmit}>
+              <FormControl id="name" marginBottom="4">
+                <Input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name" bg="white"
+                  required
+                />
+              </FormControl>
+              <FormControl id="email" marginBottom="4">
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your name" bg="white"
+                  required
+                />
+              </FormControl>
+              <FormControl id="opinion" marginBottom="4">
+                <Textarea
+                  value={opinion}
+                  onChange={(e) => setOpinion(e.target.value)}
+                  placeholder="Your name" bg="white"
+                  rows={4}
+                  required
+                />
+              </FormControl>
+              <Button type="submit" colorScheme="blue" size="md" isLoading={isLoading} loadingText="Loading...">
+                  {isLoading ? <Spinner size="sm" /> : 'Send Opinion'}
+              </Button>
+           </form>
           </Stack>
         </Stack>
       </Container>
