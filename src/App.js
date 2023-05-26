@@ -15,7 +15,7 @@ export default function App() {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/404" element={<NotFound />} />
-
+        <Route path="/review/:extension" element={<ExitForm/>} />
       </Routes>
       <Footer />
     </>
