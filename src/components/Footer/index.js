@@ -14,7 +14,8 @@ import {
   Textarea,
   useToken,
   FormControl, 
-  Spinner
+  Spinner,
+  useToast,
 } from "@chakra-ui/react";
 import {
   EnvelopeSimple,
@@ -30,6 +31,7 @@ function Footer() {
   const [email, setEmail] = useState('');
   const [opinion, setOpinion] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,8 +42,22 @@ function Footer() {
         email,
         opinion
       });
+      toast({
+        title: 'Opinion submitted.',
+        description: 'Thank you for your opinion!',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
       console.log('Response:', response.data);
     } catch (error) {
+      toast({
+        title: 'Opinion submission failure.',
+        description: 'Some internal issue, please try again later!',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
       console.error('Error:', error);
     }finally{
       setIsLoading(false);
