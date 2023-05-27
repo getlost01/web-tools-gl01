@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import {
   Box,
@@ -67,13 +68,15 @@ function ReviewForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const cookieValue = Cookies.get(currentData.cookies);
+      console.log(cookieValue);
       setIsLoading(true);
       const response = await axios.post(`https://extensions-info-api.vercel.app/api/reviews/add`, {
         rating,
         email,
         feedBack,
         extension,
-        userID
+        userID: cookieValue
       });
       toast({
         title: 'Review submitted',
@@ -84,7 +87,7 @@ function ReviewForm() {
       });
       setEmail("");
       setFeedBack("");
-      setRating(3);
+      setRating(0);
     } catch (error) {
       toast({
         title: 'Review submission failure.',
