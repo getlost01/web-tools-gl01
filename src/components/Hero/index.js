@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Box,
@@ -15,14 +15,29 @@ import {
 } from "@chakra-ui/react";
 
 import HoverBadge from "components/HoverBadge";
+import Preloader from "components/Preloader";
 import siteData from "./siteData";
 
 function Hero(props) {
   const currentData = siteData[props.site];
-
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+      setIsLoading(true);
+      console.log(isLoading);
+  }, [props.site]);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+      console.log(isLoading);
+    }, 1000);
+  }, [isLoading]);
 
   return (
-    <Box bg="gray.900">
+    <>
+    <Box display={isLoading?"block":"none"}>
+        <Preloader color={"gray.900"}/>
+    </Box>
+    <Box bg="gray.900" display={isLoading?"none":"block"}>
       <Container
         maxW={{ base: "container.sm", xl: "container.xl" }}
         pt={{ base: "3rem", md: "6rem", xl: "8.75rem" }}
@@ -83,6 +98,7 @@ function Hero(props) {
         </Stack>
       </Container>
     </Box>
+   </> 
   );
 }
 

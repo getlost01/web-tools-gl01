@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Box,
@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { FaStar } from 'react-icons/fa';
 import NotFound from "pages/NotFound";
+import Preloader from "components/Preloader";
 import siteData from "./siteData";
 
 
@@ -33,6 +34,12 @@ function ReviewForm() {
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const currentData = siteData[extension];
+  const [isPreLoading, setIsPreLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsPreLoading(false);
+    }, 1000);
+  }, [isPreLoading]);
 
   const handleRating = (value) => {
     setRating(value);
@@ -82,11 +89,15 @@ function ReviewForm() {
   };
 
   return (
-    <Box display={"flex"} justifyContent={"center"} padding={"2rem"}>
+    <>
+    <Box display={isPreLoading?"block":"none"}>
+        <Preloader color={"gray.200"}/>
+    </Box>
+    <Box display={isPreLoading?"none":"flex"} justifyContent={"center"} padding={"2rem"}>
       <Box
       w={{ base: "100%", md: "75%", lg: "60%" }} 
       p={{ base: 4, md: 8 }}
-      backgroundColor={"gray.100"}
+      backgroundColor={"gray.200"}
       borderRadius={"1.5rem"}
       border={"1px solid #ccc"}
       >
@@ -130,6 +141,7 @@ function ReviewForm() {
         </form>
       </Box>
     </Box>
+  </>
   );
 }
 

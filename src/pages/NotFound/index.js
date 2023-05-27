@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { Box, Button, Container, Heading, VStack, Image} from "@chakra-ui/react";
+import Preloader from "components/Preloader";
 
 function NotFound() {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+      console.log(isLoading);
+    }, 1000);
+  }, [isLoading]);
   return (
-    <Box bg="black">
+    <>
+    <Box display={isLoading?"block":"none"}>
+        <Preloader color={"gray.900"}/>
+    </Box>
+    <Box bg="black" display={isLoading?"none":"block"}>
       <Container
         maxW={{ base: "container.sm", xl: "container.xl" }}
         pt={{ base: "3rem", md: "4.75rem" }}
@@ -24,6 +36,7 @@ function NotFound() {
         </VStack>
       </Container>
     </Box>
+  </>
   );
 }
 
