@@ -9,7 +9,6 @@ function NotFound() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-      console.log(isLoading);
     }, 1000);
   }, [isLoading]);
   return (

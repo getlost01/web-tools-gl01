@@ -36,9 +36,20 @@ function ReviewForm() {
   const currentData = siteData[extension];
   const [isPreLoading, setIsPreLoading] = useState(true);
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' 
+    });
+    setIsPreLoading(true);
+  }, [extension]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' 
+    });
     setTimeout(() => {
       setIsPreLoading(false);
-    }, 1000);
+    }, 500);
   }, [isPreLoading]);
 
   const handleRating = (value) => {

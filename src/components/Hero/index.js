@@ -22,13 +22,19 @@ function Hero(props) {
   const currentData = siteData[props.site];
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+      });
       setIsLoading(true);
-      console.log(isLoading);
   }, [props.site]);
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' 
+    });
     setTimeout(() => {
       setIsLoading(false);
-      console.log(isLoading);
     }, 1000);
   }, [isLoading]);
 
