@@ -27,7 +27,7 @@ function ReviewForm() {
   if(extension!='vibrantcolortools' && extension!='sitesaver' && extension!='cpcontestcalendar'){
     return <NotFound/>
   }
-  const [rating, setRating] = useState(3);
+  const [rating, setRating] = useState(0);
   const [feedBack, setFeedBack] = useState('');
   const [email, setEmail] = useState('');
   const [userID, setUserID] = useState('');
@@ -104,11 +104,11 @@ function ReviewForm() {
     <Box display={isPreLoading?"block":"none"}>
         <Preloader color={"gray.200"}/>
     </Box>
-    <Box display={isPreLoading?"none":"flex"} justifyContent={"center"} padding={"2rem"}>
+    <Box display={isPreLoading?"none":"flex"} justifyContent={"center"} padding={"2rem 1rem"}>
       <Box
       w={{ base: "100%", md: "75%", lg: "60%" }} 
       p={{ base: 4, md: 8 }}
-      backgroundColor={"gray.200"}
+      backgroundColor={"gray.100"}
       borderRadius={"1.5rem"}
       border={"1px solid #ccc"}
       >
@@ -132,7 +132,7 @@ function ReviewForm() {
             ))}
           </HStack>
           <FormControl id="feedBack" mb={4}>
-            <FormLabel fontWeight={700} color={'gray.600'}>FeedBack</FormLabel>
+            <FormLabel fontWeight={700} color={'gray.600'}>Feedback</FormLabel>
             <Textarea
               value={feedBack}
               backgroundColor={"white"}
