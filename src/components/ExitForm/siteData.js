@@ -1,15 +1,18 @@
 const siteData = {
   "sitesaver":{
       "name": "Site Saver",
-      "cookies": "ssUser"
+      "cookies": "ssUser",
+      "inactiveName": "SiteSaver"
   },
   "vibrantcolortools":{
       "name": "Vibrant Color Dropper & Tools",
-      "cookies": "vctUser"
+      "cookies": "vctUser",
+      "inactiveName": "ColorDropper"
   },
   "cpcontestcalendar":{
       "name": "CP Contest Calendar",
-      "cookies": "cpcUser"
+      "cookies": "cpcUser",
+      "inactiveName": "CPCalendar"
   }
 }
 

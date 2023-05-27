@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
@@ -28,6 +28,7 @@ function ReviewForm() {
   if(extension!='vibrantcolortools' && extension!='sitesaver' && extension!='cpcontestcalendar'){
     return <NotFound/>
   }
+  const location = useLocation();
   const [rating, setRating] = useState(0);
   const [feedBack, setFeedBack] = useState('');
   const [email, setEmail] = useState('');
@@ -43,6 +44,7 @@ function ReviewForm() {
     });
     setIsPreLoading(true);
   }, [extension]);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -52,6 +54,28 @@ function ReviewForm() {
       setIsPreLoading(false);
     }, 500);
   }, [isPreLoading]);
+
+  useEffect(() =>{
+    const searchParams = new URLSearchParams(location.search);
+    const params = {};
+
+    for (const [key, value] of searchParams.entries()) {
+      params[key] = value;
+    }
+    var currDay = new Date();
+		var year = currDay.getFullYear();
+		var month = String(currDay.getMonth() + 1).padStart(2, '0');
+		var day = String(currDay.getDate()).padStart(2, '0'); 
+		var currDay = `${year}-${month}-${day}`;
+    if(params.u){
+      axios.post(`https://extensions-info-api.vercel.app/api/collect/inactive`, {
+        extension: currentData.inactiveName,
+        userID: params.u,
+        day: currDay
+      });
+    }
+    console.log(params);
+  },[]);
 
   const handleRating = (value) => {
     setRating(value);
