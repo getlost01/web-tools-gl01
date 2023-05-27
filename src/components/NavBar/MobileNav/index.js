@@ -67,9 +67,9 @@ function MobileNav({ links, ...props }) {
             </VStack>
             {/* Login buttons */}
             <VStack w="100%" alignItems="stretch" py="3rem">
-              <Button
-                as={NavLink}
-                to="/login"
+            <Button 
+                as="a" target="_blank" 
+                href={"https://chrome.google.com/webstore/devconsole"} 
                 variant="ghost"
                 colorScheme="whiteAlpha"
                 color="white"

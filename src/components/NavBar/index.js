@@ -53,7 +53,7 @@ function NavBar() {
           {/* Right Links */}
           <Show above="lg">
             <HStack spacing="1.125rem">
-              <Button as={NavLink} to="/signup" colorScheme="blue">
+              <Button as="a" target="_blank" href={"https://chrome.google.com/webstore/devconsole"} colorScheme="blue">
                 Admin Login
               </Button>
             </HStack>
