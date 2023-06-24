@@ -3,6 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box, HStack, Heading, Text, VStack } from "@chakra-ui/react";
 
+// This is the component for the showing feature box of the extension
+
 function FeatureCell({ icon, heading, text, ...props }) {
   return (
     <VStack alignItems="start" spacing="1rem" {...props}>

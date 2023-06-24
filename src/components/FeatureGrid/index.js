@@ -4,10 +4,10 @@ import { Container, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import FeatureCell from "./FeatureCell";
 import siteData from "./siteData";
 
+// This is the component for the feature grid of the extension which contains the feature cells
 
 function FeatureGrid(props) {
   const currentData = siteData[props.site];
-
 
   return (
     <Container
@@ -25,7 +25,7 @@ function FeatureGrid(props) {
             About this Extension
           </Heading>
           <Text lineHeight="1.5">
-          Enhanced your productivity and efficiency in web browsing with the facilities like these.
+            Enhanced your productivity and efficiency in web browsing with the facilities like these.
           </Text>
         </VStack>
         {/* Grid */}

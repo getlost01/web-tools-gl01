@@ -25,6 +25,7 @@ function MobileNav({ links, ...props }) {
   return (
     <Hide above="lg">
       {/* Menu button */}
+
       <Button
         variant="circle"
         px="0"
@@ -34,7 +35,9 @@ function MobileNav({ links, ...props }) {
       >
         <List size={28} weight="bold" />
       </Button>
+
       {/* Menu overlay */}
+
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -65,11 +68,14 @@ function MobileNav({ links, ...props }) {
                 );
               })}
             </VStack>
+
             {/* Login buttons */}
+
             <VStack w="100%" alignItems="stretch" py="3rem">
-            <Button 
-                as="a" target="_blank" 
-                href={"https://chrome.google.com/webstore/devconsole"} 
+              <Button
+                as="a"
+                target="_blank"
+                href={"https://chrome.google.com/webstore/devconsole"}
                 variant="ghost"
                 colorScheme="whiteAlpha"
                 color="white"

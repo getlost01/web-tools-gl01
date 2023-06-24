@@ -7,6 +7,8 @@ import LogoWhite from "assets/images/brand-logo/logo.svg";
 import MobileNav from "./MobileNav";
 
 function NavBar() {
+  // State variables for the navigation links
+
   const [navLinks] = useState([
     {
       name: "CP Contest Calendar",
@@ -27,6 +29,7 @@ function NavBar() {
       <Container maxW="container.xl" py="1.5rem">
         <HStack justifyContent="space-between" spacing="6rem">
           {/* Left links */}
+
           <HStack spacing="6rem">
             <Link as={NavLink} to="/">
               <LogoWhite />
@@ -50,15 +53,24 @@ function NavBar() {
               </HStack>
             </Show>
           </HStack>
+
           {/* Right Links */}
+
           <Show above="lg">
             <HStack spacing="1.125rem">
-              <Button as="a" target="_blank" href={"https://chrome.google.com/webstore/devconsole"} colorScheme="blue">
+              <Button
+                as="a"
+                target="_blank"
+                href={"https://chrome.google.com/webstore/devconsole"}
+                colorScheme="blue"
+              >
                 Admin Login
               </Button>
             </HStack>
           </Show>
+
           {/* Mobile menu */}
+
           <MobileNav links={navLinks} />
         </HStack>
       </Container>
