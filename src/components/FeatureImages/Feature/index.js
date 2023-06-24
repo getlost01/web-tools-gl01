@@ -67,7 +67,7 @@ function Feature({
             rounded={["1rem", "1.5rem", "2rem"]}
             src={imageSrc}
             alt={imageAlt}
-            sx={{border: "1px solid #555", width: "30rem"}}
+            sx={{ border: "1px solid #555", width: "30rem" }}
           />
           {children}
         </Box>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Box, Spinner } from '@chakra-ui/react';
+import { Box, Spinner } from "@chakra-ui/react";
+
+// This is the component for the preloader
 
 const Preloader = (props) => {
   return (
@@ -13,12 +15,7 @@ const Preloader = (props) => {
       position="absolute"
       zIndex={100}
     >
-      <Spinner
-        thickness='6px'
-        speed='0.5s'
-        color='blue.300'
-        size='xl'
-      />
+      <Spinner thickness="6px" speed="0.5s" color="blue.300" size="xl" />
     </Box>
   );
 };
